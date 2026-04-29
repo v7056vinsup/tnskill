@@ -1,10 +1,35 @@
+"use client";
+
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const MagicRings = dynamic(() => import("@/components/MagicRings"), {
+  ssr: false,
+});
 
 export default function Hero() {
   return (
     <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden pt-16">
-      <div className="hero-glow left-1/4 top-1/4 -translate-x-1/2 -translate-y-1/2" />
-      <div className="hero-glow right-1/4 bottom-1/4 translate-x-1/2 translate-y-1/2" />
+      <div className="absolute inset-0 z-0">
+        <MagicRings
+          color="#7c3aed"
+          colorTwo="#4f46e5"
+          ringCount={6}
+          speed={0.8}
+          attenuation={8}
+          lineThickness={1.5}
+          baseRadius={0.3}
+          radiusStep={0.1}
+          scaleRate={0.08}
+          opacity={0.6}
+          noiseAmount={0.05}
+          rotation={15}
+          ringGap={1.4}
+          followMouse
+          mouseInfluence={0.15}
+          parallax={0.03}
+        />
+      </div>
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-4 py-1.5 text-sm text-text-secondary backdrop-blur-sm">
